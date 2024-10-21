@@ -1,7 +1,7 @@
 const {DataTypes} = require("sequelize");
-const SQLconnection = require("../connection");
+const connection = require("../connection");
 
-const User = SQLconnection.define("User",{
+const User = connection.define("User",{
     user_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -24,7 +24,8 @@ const User = SQLconnection.define("User",{
     },
     password:{
         type: DataTypes.STRING,
-        unique: false
+        unique: false,
+        allowNull: false
     }
 })
 
