@@ -1,7 +1,8 @@
 const cors = require("cors");
 const express = require("express");
 const app = express();
-const User = require("./db/models/userModel")
+const User = require("./db/models/userModel");
+const userRouter = require("./db/routes/userRoutes");
 require("dotenv").config();
 //This allows to access any variable stored in the .env file
 app.use(cors())
@@ -15,7 +16,7 @@ const port = process.env.PORT || 5001 ;
 
 // const SQLconnection = require("./db/connection");
 // SQLconnection();
-
+app.use(userRouter);
 app.get("/health", (req,res) => res.status(200).send("API is healthy"));
 
 syncTables();
