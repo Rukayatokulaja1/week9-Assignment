@@ -26,6 +26,8 @@ async function checkPassword(req,res,next) {
             res.status(404).send("username/email and password do not match");
             return;
         }
+        req.body.email = userDetails.dataValues.email;
+        req.body.username = userDetails.dataValues.username;
         next()
     } catch (error) {
         console.log(error);
